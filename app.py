@@ -1,8 +1,9 @@
 import pickle
 import numpy as np
+import pickle
 
-# Load model MCU
-model = pickle.load(open('model/linear.pkl', 'rb'))  
+
+model = pickle.load(open('model/linear.pkl', 'wb'))  
 
 app = st.text_input(__name__, template_folder='templates')
 
