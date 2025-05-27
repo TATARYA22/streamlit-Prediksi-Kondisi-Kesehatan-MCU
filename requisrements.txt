@@ -1,3 +1,6 @@
-flask==3.0.3
-numpy==2.0.0
-pandas==2.2.2
+numpy==2.2.6
+pandas==2.2.3
+streamlit
+pickle
+scikit-learn
+pip==23.0.1
