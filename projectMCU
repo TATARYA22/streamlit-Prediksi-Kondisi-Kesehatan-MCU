@@ -1,0 +1,24 @@
+import numpy as np
+import pandas as pd
+import pickle
+
+model_path = '/content/drive/MyDrive/model.pkl'  # Ganti sesuai path kamu
+model = pickle.load(open(model_path, 'rb'))
+
+
+sistolik = float(input('Masukkan Tekanan Darah Sistolik: '))
+diastolik = float(input('Masukkan Tekanan Darah Diastolik: '))
+denyut = float(input('Masukkan Denyut Nadi: '))
+suhu = float(input('Masukkan Suhu Tubuh: '))
+tensi = float(input('Masukkan Kode Kesimpulan Tensi (0: Normal, 1: Pre Hipertensi, 2: Hipertensi): '))
+jantung = float(input('Masukkan Kode Kesimpulan Jantung (0: Normal, 1: Gangguan Irama): '))
+
+
+data_input = np.array([[sistolik, diastolik, denyut, suhu, tensi, jantung]])
+prediction = model.predict(data_input)
+hasil = 'Sehat' if prediction[0] == 0 else 'Tidak Sehat'
+
+import pickle
+print(f"Hasil Prediksi Kondisi Kesehatan: {hasil}")
+pickle.dump(linear_model, open('linear.pkl', "wb"))
+
