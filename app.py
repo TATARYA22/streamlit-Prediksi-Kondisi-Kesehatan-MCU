@@ -4,7 +4,7 @@ import numpy as np
 # Load model MCU
 model = pickle.load(open('model/linear.pkl', 'rb'))  
 
-app = Flask(__name__, template_folder='templates')
+app = st.text_input(__name__, template_folder='templates')
 
 tensi_mapping = {'Normal': 0, 'Tinggi': 1, 'Rendah': 2}
 jantung_mapping = {'Normal': 0, 'Tidak Normal': 1}
