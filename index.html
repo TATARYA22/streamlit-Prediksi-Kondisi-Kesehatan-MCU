@@ -2,134 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediksi Kondisi Kesehatan MCU</title>
     <style>
         body {
-            background-color: #219cd4;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
-            font-family: 'Rubik', sans-serif;
+            font-family: Arial, sans-serif;
         }
-
         #container {
             width: 500px;
-            background-color: #c4c0e7;
+            background-color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(204, 138, 138, 0.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
             text-align: center;
         }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
         .form-group {
-            margin-bottom: 15px;
+            margin: 15px 0;
             text-align: left;
         }
-
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
         }
-
         input, select, button {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #cccccc;
-            font-size: 14px;
         }
-
         button {
             background-color: #007BFF;
             color: white;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
         .result {
             margin-top: 20px;
             padding: 15px;
-            border: 1px solid #7868bd;
-            background-color: #bd1717;
+            background-color: #eee;
             border-radius: 5px;
-        }
-
-        footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
         }
     </style>
 </head>
 <body>
     <div id="container">
         <h1>Prediksi Kondisi Kesehatan MCU</h1>
-
         <form action="/predict" method="post">
             <div class="form-group">
                 <label for="sistolik">Tekanan Darah Sistolik:</label>
-                <input type="number" id="sistolik" name="sistolik" required>
+                <input type="number" name="sistolik" required>
             </div>
-
             <div class="form-group">
                 <label for="diastolik">Tekanan Darah Diastolik:</label>
-                <input type="number" id="diastolik" name="diastolik" required>
+                <input type="number" name="diastolik" required>
             </div>
-
             <div class="form-group">
                 <label for="denyut">Denyut Nadi:</label>
-                <input type="number" id="denyut" name="denyut" required>
+                <input type="number" name="denyut" required>
             </div>
-
             <div class="form-group">
                 <label for="suhu">Suhu Tubuh:</label>
-                <input type="number" id="suhu" name="suhu" step="0.1" required>
+                <input type="number" name="suhu" step="0.1" required>
             </div>
-
             <div class="form-group">
-                <label for="tensi">Kesimpulan Tensi (0: Normal, 1: Pre Hipertensi, 2: Hipertensi):</label>
-                <select id="tensi" name="tensi" required>
-                    <option selected disabled>Pilih Kesimpulan Tensi</option>
-                    <option value="0">Normal</option>
-                    <option value="1">Pre Hipertensi</option>
-                    <option value="2">Hipertensi</option>
+                <label for="tensi">Kesimpulan Tensi:</label>
+                <select name="tensi" required>
+                    <option value="Normal">Normal</option>
+                    <option value="Pre Hipertensi">Pre Hipertensi</option>
+                    <option value="Hipertensi">Hipertensi</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="jantung">Kesimpulan Jantung (0: Normal, 1: Gangguan Irama):</label>
-                <select id="jantung" name="jantung" required>
-                    <option selected disabled>Pilih Kesimpulan Jantung</option>
-                    <option value="0">Normal</option>
-                    <option value="1">Gangguan Irama</option>
+                <label for="jantung">Kesimpulan Jantung:</label>
+                <select name="jantung" required>
+                    <option value="Normal">Normal</option>
+                    <option value="Tidak Normal">Tidak Normal</option>
                 </select>
             </div>
-
             <button type="submit">Prediksi Kesehatan</button>
         </form>
 
         {% if prediction_text %}
         <div class="result">
-            <h3>Hasil Prediksi:</h3>
-            <p>{{ prediction_text|safe }}</p>
+            <h3>{{ prediction_text|safe }}</h3>
         </div>
         {% endif %}
-
-        <footer>
     </div>
 </body>
 </html>
